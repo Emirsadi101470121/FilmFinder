@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🍿 FilmFinder</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <main class="app">
-    <h1 class="title">🍿 FilmFinder</h1>
-    <form id="searchForm" class="search-bar">
-      <input type="text" id="searchInput" placeholder="Type a movie name..." required />
-      <button type="submit">🎬 Find It!</button>
-    </form>
-    <section id="resultsContainer" class="results"></section>
-  </main>
-
-  <script src="helpers.js"></script>
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="public/style.css" />
+    <title>Film Finder</title>
+  </head>
+  <body>
+    <main>
+      <h1>🎬 Film Finder</h1>
+      <form id="search-form">
+        <input type="text" id="search-input" placeholder="Search for a movie..." required />
+        <button type="submit">Search</button>
+      </form>
+      <section id="movie-container"></section>
+    </main>
+    <script src="public/helpers.js"></script>
+    <script src="public/script.js"></script>
+  </body>
 </html>

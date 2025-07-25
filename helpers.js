@@ -1,20 +1,19 @@
-const createMovieCard = (movie) => {
-  const card = document.createElement('div');
-  card.className = 'movie-card';
+const createMovieElement = (movie) => {
+  const movieEl = document.createElement("div");
+  movieEl.className = "movie";
 
-  const poster = document.createElement('img');
-  poster.src = movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/80x120?text=No+Poster';
-  poster.alt = `${movie.Title} Poster`;
+  const poster = document.createElement("img");
+  poster.src = movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/80x120";
+  poster.alt = `${movie.Title} poster`;
 
-  const info = document.createElement('div');
-  info.className = 'info';
+  const info = document.createElement("div");
+  info.className = "movie-info";
   info.innerHTML = `
     <h3>${movie.Title}</h3>
-    <p><strong>Year:</strong> ${movie.Year}</p>
-    <p><strong>Type:</strong> ${movie.Type}</p>
+    <p>${movie.Year}</p>
   `;
 
-  card.appendChild(poster);
-  card.appendChild(info);
-  return card;
+  movieEl.appendChild(poster);
+  movieEl.appendChild(info);
+  return movieEl;
 };

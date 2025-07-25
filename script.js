@@ -1,32 +1,32 @@
-const searchForm = document.getElementById('searchForm');
-const searchInput = document.getElementById('searchInput');
-const resultsContainer = document.getElementById('resultsContainer');
+const API_URL = "https://www.omdbapi.com/?apikey=564727fa&s=";
 
-const API_URL = 'https://www.omdbapi.com/?apikey=564727fa&s=';
+const form = document.getElementById("search-form");
+const input = document.getElementById("search-input");
+const container = document.getElementById("movie-container");
 
-searchForm.addEventListener('submit', async (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const query = searchInput.value.trim();
-  resultsContainer.innerHTML = '';
-
+  const query = input.value.trim();
   if (!query) return;
 
-  try {
-    resultsContainer.innerHTML = '<p>🍿 Searching...</p>';
-    const response = await fetch(API_URL + encodeURIComponent(query));
-    const data = await response.json();
-    resultsContainer.innerHTML = '';
+  container.innerHTML = "<p>Searching...</p>";
 
-    if (data.Response === 'True') {
-      data.Search.forEach(movie => {
-        const card = createMovieCard(movie);
-        resultsContainer.appendChild(card);
+  try {
+    const res = await fetch(API_URL + encodeURIComponent(query));
+    const data = await res.json();
+
+    container.innerHTML = "";
+
+    if (data.Response === "True") {
+      data.Search.forEach((movie) => {
+        const el = createMovieElement(movie);
+        container.appendChild(el);
       });
     } else {
-      resultsContainer.innerHTML = '<p class="error">😢 No results found. Try another title!</p>';
+      container.innerHTML = `<p>No results found for "${query}".</p>`;
     }
   } catch (error) {
+    container.innerHTML = "<p>Something went wrong. Please try again later.</p>";
     console.error(error);
-    resultsContainer.innerHTML = '<p class="error">🚨 Oops! Something went wrong.</p>';
   }
 });
