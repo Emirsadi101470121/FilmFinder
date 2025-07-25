@@ -1,9 +1,8 @@
-
 const searchForm = document.getElementById('searchForm');
 const searchInput = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('resultsContainer');
 
-const API_KEY = 'https://www.omdbapi.com/?apikey=564727fa&s=';
+const API_URL = 'https://www.omdbapi.com/?apikey=564727fa&s=';
 
 searchForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -13,10 +12,9 @@ searchForm.addEventListener('submit', async (e) => {
   if (!query) return;
 
   try {
-    resultsContainer.innerHTML = '<p>🔎 Searching...</p>';
-    const response = await fetch(API_KEY + encodeURIComponent(query));
+    resultsContainer.innerHTML = '<p>🍿 Searching...</p>';
+    const response = await fetch(API_URL + encodeURIComponent(query));
     const data = await response.json();
-
     resultsContainer.innerHTML = '';
 
     if (data.Response === 'True') {
@@ -25,10 +23,10 @@ searchForm.addEventListener('submit', async (e) => {
         resultsContainer.appendChild(card);
       });
     } else {
-      resultsContainer.innerHTML = '<p class="error">No results found. Please try another title.</p>';
+      resultsContainer.innerHTML = '<p class="error">😢 No results found. Try another title!</p>';
     }
-  } catch (err) {
-    console.error(err);
-    resultsContainer.innerHTML = '<p class="error">Something went wrong. Please try again later.</p>';
+  } catch (error) {
+    console.error(error);
+    resultsContainer.innerHTML = '<p class="error">🚨 Oops! Something went wrong.</p>';
   }
 });
