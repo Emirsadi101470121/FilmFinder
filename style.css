@@ -1,3 +1,8 @@
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Questrial', 'Segoe UI', sans-serif;
@@ -7,30 +12,34 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: start;
   color: #222;
-  box-sizing: border-box;
 }
+
 
 header {
   text-align: center;
+  margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
 #appTitle {
   font-family: 'Fredoka One', sans-serif;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: #1e1e2f;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 form {
   margin-bottom: 1rem;
   text-align: center;
+  width: 100%;
+  max-width: 90%;
 }
 
 label {
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-right: 0.5rem;
 }
 
@@ -41,19 +50,22 @@ select {
   font-size: 1rem;
   background-color: #fff;
   color: #333;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
 
 #playBtn {
   background-color: #3b82f6;
   color: white;
-  font-size: 1.1rem;
-  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  padding: 0.7rem 1.3rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  margin: 1rem 0;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  margin: 1.2rem 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: background 0.2s ease;
 }
 
@@ -63,32 +75,37 @@ select {
 
 #movieInfo {
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
   text-align: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  width: 100%;
+  max-width: 600px;
 }
 
 #moviePoster img {
-  max-width: 250px;
+  max-width: 100%;
+  max-height: 300px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 #movieText {
-  max-width: 400px;
   font-size: 1.1rem;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.95);
   padding: 1rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
 }
 
-/* === Like / Dislike Buttons === */
+
 #likeOrDislikeBtns {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
   justify-content: center;
   margin-bottom: 2rem;
 }
@@ -98,7 +115,7 @@ select {
   border: 2px solid #ccc;
   border-radius: 50%;
   padding: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s;
 }
@@ -108,21 +125,29 @@ select {
   background-color: #e0f7fa;
 }
 
-@media (max-width: 768px) {
-  #movieInfo {
-    flex-direction: column;
-    align-items: center;
+
+@media (max-width: 480px) {
+  #appTitle {
+    font-size: 1.7rem;
+  }
+
+  label {
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
   }
 
   #movieText {
     font-size: 1rem;
+    padding: 0.8rem;
   }
 
-  #appTitle {
-    font-size: 2rem;
+  #likeOrDislikeBtns {
+    gap: 1rem;
   }
 
-  select {
-    font-size: 0.95rem;
+  #likeOrDislikeBtns button {
+    padding: 0.8rem;
+    font-size: 1.2rem;
   }
 }
